@@ -17,14 +17,14 @@ const GenresList = () => {
       {data.map((genre) => (
         <ListItem key={genre.id}>
           <HStack paddingY="10px">
-            <Skeleton isLoaded={isLoading}>
+            <Skeleton isLoaded={!isLoading} fadeDuration={1}>
               <Image
                 src={getCroppedImageUrl(genre.image_background)}
                 borderRadius="4px"
                 boxSize="32px"
               />
             </Skeleton>
-            <Skeleton isLoaded={isLoading}>
+            <Skeleton isLoaded={!isLoading} fadeDuration={1}>
               <Text fontSize="lg">{genre.name}</Text>
             </Skeleton>
           </HStack>
