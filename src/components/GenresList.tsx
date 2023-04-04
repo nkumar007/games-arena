@@ -37,7 +37,9 @@ const GenresList = ({ selectedGenre, onSelectGenre }: Props) => {
                 variant="link"
                 onClick={() => onSelectGenre(genre)}
               >
-                {genre.name}
+                {genre.name.length > 12
+                  ? `${genre.name.substring(0, 12)}...`
+                  : genre.name}
               </Button>
             </Skeleton>
           </HStack>
