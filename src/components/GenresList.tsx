@@ -5,7 +5,7 @@ import {
   Image,
   List,
   ListItem,
-  Skeleton,
+  Spinner,
 } from "@chakra-ui/react";
 import useGenres, { Genre } from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/optimize-image";
@@ -18,7 +18,8 @@ interface Props {
 const GenresList = ({ selectedGenre, onSelectGenre }: Props) => {
   const { data, isLoading, error } = useGenres();
 
-  if (error) null;
+  if (error) return null;
+  if (isLoading) return <Spinner />;
   return (
     <>
       <Heading fontSize="2xl" marginBottom={3}>
@@ -28,26 +29,23 @@ const GenresList = ({ selectedGenre, onSelectGenre }: Props) => {
         {data.map((genre) => (
           <ListItem key={genre.id}>
             <HStack paddingY="10px">
-              <Skeleton isLoaded={!isLoading} fadeDuration={1}>
-                <Image
-                  src={getCroppedImageUrl(genre.image_background)}
-                  borderRadius="4px"
-                  boxSize="36px"
-                  objectFit="cover"
-                />
-              </Skeleton>
-              <Skeleton isLoaded={!isLoading} fadeDuration={1}>
-                <Button
-                  whiteSpace="normal"
-                  textAlign="left"
-                  fontWeight={genre.id === selectedGenre?.id ? "bold" : ""}
-                  fontSize="lg"
-                  variant="link"
-                  onClick={() => onSelectGenre(genre)}
-                >
-                  {genre.name}
-                </Button>
-              </Skeleton>
+              <Image
+                src={getCroppedImageUrl(genre.image_background)}
+                borderRadius="4px"
+                boxSize="36px"
+                objectFit="cover"
+              />
+
+              <Button
+                whiteSpace="normal"
+                textAlign="left"
+                fontWeight={genre.id === selectedGenre?.id ? "bold" : ""}
+                fontSize="lg"
+                variant="link"
+                onClick={() => onSelectGenre(genre)}
+              >
+                {genre.name}
+              </Button>
             </HStack>
           </ListItem>
         ))}
