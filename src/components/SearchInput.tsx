@@ -5,7 +5,12 @@ const SearchInput = () => {
   return (
     <InputGroup>
       <InputLeftElement children={<BsSearch />} />
-      <Input borderRadius={20} placeholder="..search games" variant="filled" />
+      <Input
+        color="white"
+        borderRadius={20}
+        placeholder="..search games"
+        variant="filled"
+      />
     </InputGroup>
   );
 };
