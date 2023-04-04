@@ -1,5 +1,6 @@
 import {
   Button,
+  Heading,
   HStack,
   Image,
   List,
@@ -19,33 +20,39 @@ const GenresList = ({ selectedGenre, onSelectGenre }: Props) => {
 
   if (error) null;
   return (
-    <List>
-      {data.map((genre) => (
-        <ListItem key={genre.id}>
-          <HStack paddingY="10px">
-            <Skeleton isLoaded={!isLoading} fadeDuration={1}>
-              <Image
-                src={getCroppedImageUrl(genre.image_background)}
-                borderRadius="4px"
-                boxSize="32px"
-              />
-            </Skeleton>
-            <Skeleton isLoaded={!isLoading} fadeDuration={1}>
-              <Button
-                fontWeight={genre.id === selectedGenre?.id ? "bold" : ""}
-                fontSize="lg"
-                variant="link"
-                onClick={() => onSelectGenre(genre)}
-              >
-                {genre.name.length > 12
-                  ? `${genre.name.substring(0, 12)}...`
-                  : genre.name}
-              </Button>
-            </Skeleton>
-          </HStack>
-        </ListItem>
-      ))}
-    </List>
+    <>
+      <Heading fontSize="2xl" marginBottom={3}>
+        Genres
+      </Heading>
+      <List>
+        {data.map((genre) => (
+          <ListItem key={genre.id}>
+            <HStack paddingY="10px">
+              <Skeleton isLoaded={!isLoading} fadeDuration={1}>
+                <Image
+                  src={getCroppedImageUrl(genre.image_background)}
+                  borderRadius="4px"
+                  boxSize="36px"
+                  objectFit="cover"
+                />
+              </Skeleton>
+              <Skeleton isLoaded={!isLoading} fadeDuration={1}>
+                <Button
+                  whiteSpace="normal"
+                  textAlign="left"
+                  fontWeight={genre.id === selectedGenre?.id ? "bold" : ""}
+                  fontSize="lg"
+                  variant="link"
+                  onClick={() => onSelectGenre(genre)}
+                >
+                  {genre.name}
+                </Button>
+              </Skeleton>
+            </HStack>
+          </ListItem>
+        ))}
+      </List>
+    </>
   );
 };
 
