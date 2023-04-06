@@ -6,7 +6,7 @@ You can check out the live site at https://gamebazaar.vercel.app/
 
 ## Getting Started
 
-To get started with GameHub, follow these steps:
+To get started with GameBazaar, follow these steps:
 
 1. Clone this repository to your local machine.
 2. Run `npm install` to install the required dependencies.
