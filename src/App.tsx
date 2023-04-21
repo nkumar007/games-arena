@@ -5,7 +5,7 @@ import GenresList from "./components/GenresList";
 import Navbar from "./components/Navbar";
 import PlatformSelector from "./components/PlatformSelector";
 import SortByOrder from "./components/SortByOrder";
-import { Platform } from "./hooks/useGames";
+import { Platform } from "./hooks/usePlatform";
 import { Genre } from "./hooks/useGenres";
 import HeadingComponent from "./components/HeadingComponent";
 
