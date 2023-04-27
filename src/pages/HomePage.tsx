@@ -10,7 +10,7 @@ const HomePage = () => {
     <>
       <Grid
         templateAreas={{
-          base: ` " main"`,
+          base: ` "main"`,
           lg: ` "aside main"`, // screens wider and above 1024
         }}
         templateColumns={{
